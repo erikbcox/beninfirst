@@ -5,6 +5,7 @@ import { createStackNavigator, createBottomTabNavigator } from 'react-navigation
 import TabBarIcon from '../components/TabBarIcon';
 import HomeScreen from '../screens/HomeScreen';
 import LinksScreen from '../screens/LinksScreen';
+import MathScreen from '../screens/MathScreen';
 import SettingsScreen from '../screens/SettingsScreen';
 
 const HomeStack = createStackNavigator({
@@ -39,6 +40,20 @@ LinksStack.navigationOptions = {
   ),
 };
 
+const MathStack = createStackNavigator({
+  Math: MathScreen,
+});
+
+MathStack.navigationOptions = {
+  tabBarLabel: 'Math',
+  tabBarIcon: ({ focused }) => (
+    <TabBarIcon
+      focused={focused}
+      name={Platform.OS === 'ios' ? 'ios-link' : 'md-link'}
+    />
+  ),
+};
+
 const SettingsStack = createStackNavigator({
   Settings: SettingsScreen,
 });
@@ -54,6 +69,7 @@ SettingsStack.navigationOptions = {
 };
 
 export default createBottomTabNavigator({
+  MathStack,
   HomeStack,
   LinksStack,
   SettingsStack,
